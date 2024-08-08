@@ -1,0 +1,14 @@
+# This defaults properties file is provided to document 
+# the most relevant properties and its defaults.
+probe:
+  channel:
+    class: org.jpos.iso.channel.ASCIIChannel
+  packager:
+    config: jar:packager/iso87ascii.xml
+  host: localhost
+  timeout: 15000
+  port: 5050
+  header: ""
+  
+  
+      

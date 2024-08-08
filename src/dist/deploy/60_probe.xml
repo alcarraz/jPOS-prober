@@ -18,11 +18,8 @@
   ~
   -->
 
-<logger name="Q2">
-  <log-listener class="org.jpos.util.RealmLogFilter" enabled="${!probe.verbose}">
-    <property name="dump-interval" value="60000"/>
-    <disabled>${probe.log.disable-realms:Q2.system}</disabled>
-  </log-listener>
-
-  <log-listener class="org.jpos.util.SimpleLogListener" />
-</logger>
+<probe class="org.jpos.probe.Probe" realm="probe" enabled="${probe.enabled:true}">
+  <property name="timeout" value="${probe.timeout:30000}"/>
+  <property name="shutdown" value="${probe.shutdown:true}"/>
+  <property name="messages-file" value="${probe.message-file:-}"/>
+</probe>

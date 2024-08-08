@@ -18,11 +18,15 @@
   ~
   -->
 
-<logger name="Q2">
-  <log-listener class="org.jpos.util.RealmLogFilter" enabled="${!probe.verbose}">
-    <property name="dump-interval" value="60000"/>
-    <disabled>${probe.log.disable-realms:Q2.system}</disabled>
-  </log-listener>
+<mux name="probe-mux" class="org.jpos.q2.iso.QMUX"
+     enabled="${probe.enabled:true}"
+     logger="${probe.logger:Q2}" realm="probe-mux">
+  <!-- this will be possible if PR  https://github.com/jpos/jPOS/pull/560 
+        is approved and merged
+  <key>${probe.mux.key:11,41}</key>
+  -->
+  <in>probe-receive</in>
+  <out>probe-send</out>
 
-  <log-listener class="org.jpos.util.SimpleLogListener" />
-</logger>
+  <ready>probe-channel.ready</ready>
+</mux>

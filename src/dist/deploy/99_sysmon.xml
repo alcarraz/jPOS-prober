@@ -18,11 +18,8 @@
   ~
   -->
 
-<logger name="Q2">
-  <log-listener class="org.jpos.util.RealmLogFilter" enabled="${!probe.verbose}">
-    <property name="dump-interval" value="60000"/>
-    <disabled>${probe.log.disable-realms:Q2.system}</disabled>
-  </log-listener>
+<sysmon logger="Q2" enabled="${probe.verbose}">
+ <attr name="sleepTime" type="java.lang.Long">3600000</attr>
+ <attr name="detailRequired" type="java.lang.Boolean">true</attr>
+</sysmon>
 
-  <log-listener class="org.jpos.util.SimpleLogListener" />
-</logger>
