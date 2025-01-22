@@ -1,7 +1,7 @@
 <!--
   ~ jpos-prober [https://github.com/alcarraz/jpos-prober]
   ~
-  ~ Copyright (C) 2024.  Andrés Alcarraz
+  ~ Copyright (C) 2025.  Andrés Alcarraz
   ~
   ~ This program is free software: you can redistribute it and/or modify
   ~ it under the terms of the GNU General Public License as published by
@@ -26,12 +26,13 @@
            logger="${probe.logger:Q2}" realm="probe-channel"
            header="${probe.header:}">
 
-    <property name="packager-config" value="${probe.packager.config}"/>
+    <property name="packager-config" value="${probe.packager.config:jar:packager/iso87ascii.xml}"/>
     <property name="packager-logger" value="${probe.packager.logger}"/>
     <property name="packager-realm" value="probe-packager"/>
-    <property name="host" value="${probe.host}"/>
+    <property name="host" value="${probe.host:localhost}"/>
     <property name="port" value="${probe.port}"/>
     <property name="timeout" value="${probe.channel.timeout:${probe.timeout:30000}}"/>
+    <property name="override-header" value="${probe.channel.override-header}"/>
   </channel>
   <in>probe-send</in>
   <out>probe-receive</out>
